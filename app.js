@@ -42,7 +42,7 @@ new Vue({
     var handleWidth = scrubWidth / sections 
 
     var ratio = scrubWidth / (slideWidth * sections); 
-    
+
     gsap.set(handle, { width: handleWidth })
 
     Draggable.create(slider, {
@@ -52,6 +52,12 @@ new Vue({
       throwProps: true,
       onDrag: updateHandle,
       onThrowUpdate: updateHandle,
+      onDragEnd: function() {
+        let tl = gsap.timeline();
+        // gsap.to('.slide', 0.5, { x: `${this.deltaX + this.deltaX}` })
+        gsap.to('.slide', 0.5, { x: `${this.x + this.x}` })
+        console.log(this);
+      },
       snap: {
         x(value) {
           return Math.round(value / slideWidth) * -slideWidth
@@ -65,7 +71,7 @@ new Vue({
 
     Draggable.create(handle, {
       type: "x",
-      edgeResistance: 0.5,
+      edgeResistance: 0,
       bounds: scrubber,
       throwProps: true,
       onDrag: updateSlides,
