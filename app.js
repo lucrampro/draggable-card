@@ -33,7 +33,6 @@ new Vue({
       scrubber,
       handle,
     } = this.$refs
-    
 
     var maxScroll = slider.scrollWidth - slider.offsetWidth 
     var sections = slides.length 
@@ -47,16 +46,16 @@ new Vue({
 
     Draggable.create(slider, {
       type: "scrollLeft",
-      edgeResistance: 0.5,
-      bounds: container,
+      edgeResistance: 0,
+      bounds: slider,
       throwProps: true,
+      maxX: '-462', 
       onDrag: updateHandle,
       onThrowUpdate: updateHandle,
       onDragEnd: function() {
         let tl = gsap.timeline();
         // gsap.to('.slide', 0.5, { x: `${this.deltaX + this.deltaX}` })
-        gsap.to('.slide', 0.5, { x: `${this.x + this.x}` })
-        console.log(this);
+        tl.to('.slide img', 0.8, { x: `${this.x + this.x}` })
       },
       snap: {
         x(value) {
