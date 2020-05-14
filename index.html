@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./style.css">
+<body>
+</head>
+  <div id="app">
+    <div class="projects">
+      <div id="container" ref="container">
+        <div id="slider" ref="slider">
+          <div class="slide" v-for="(project, i) in projectData" v-bind:key="i" :class="i" v-bind:style="projectData[i]" ref="slides">
+            <div class="wrapperimg">
+              <img style="" v-bind:src="projectData[i].img1" alt="">
+              <img style="margin-top: 200px;" v-bind:src="projectData[i].img2" alt="">
+              <img style="margin-bottom: 100px;" v-bind:src="projectData[i].img3" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div style="opacity: 0;" id="scrubber" ref="scrubber">
+        <div id="handle" ref="handle">
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/Draggable.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
